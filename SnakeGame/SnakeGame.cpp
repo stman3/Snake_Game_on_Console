@@ -5,7 +5,7 @@ using namespace std;
 
 void Setup() {
 	int s = 0;
-
+	int b = 0;
 }
 
 
