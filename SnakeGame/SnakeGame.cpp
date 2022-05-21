@@ -4,6 +4,7 @@ using namespace std;
 
 
 void Setup() {
+	int s = 0;
 
 }
 
