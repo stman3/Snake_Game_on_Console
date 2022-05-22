@@ -1,5 +1,6 @@
 #include <iostream>
 #include <conio.h>
+#include <Windows.h>
 using namespace std;
 
 bool GameOver;
@@ -30,7 +31,7 @@ void Setup() {
 	y = hight / 2;
 	fruitX = rand() % width;
 	fruitY = rand() % hight;
-	if (fruitX == width / 2 && fruitY == hight / 2) {
+	while (fruitX == width / 2 && fruitY == hight / 2) {
 		fruitX = rand() % width;
 		fruitY = rand() % hight;
 	}
@@ -65,8 +66,7 @@ void Draw(){
 		}
 		cout << endl;
 	}
-
-
+	cout << "Score: " << score;
 
 
 }
@@ -122,8 +122,18 @@ void logic() {
 	}
 
 
-	if (x <= 0 || x >= width - 1 || y <= 0 || y >= hight - 1) {
+	if (x <= 0 || x >= width -1 || y <= 0 || y > hight-1 ) {
 		GameOver = true;
+	}
+
+	if (x == fruitX && y == fruitY) {
+		fruitX = rand() % width;
+		fruitY = rand() % hight;
+		fruitX = rand() % width;
+		fruitY = rand() % hight;
+		fruitX = rand() % width;
+		fruitY = rand() % hight;
+		score++;
 	}
 
 }
@@ -137,7 +147,7 @@ int main() {
 		Draw();
 		game_Input();
 		logic();
-
+		Sleep(30);
 	}
 
 	return 0;
