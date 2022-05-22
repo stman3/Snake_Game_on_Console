@@ -13,6 +13,8 @@ If you want to change the speed just change the number of speed in Setup func.
 
 If the game reload so fast just change the sleep time on  main func
 
+![Capt2ure](https://user-images.githubusercontent.com/75269916/169674103-83d6c3a0-0fd6-4fa8-a1ba-6f711c2e872a.PNG)
+
 
 
 
