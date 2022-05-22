@@ -156,6 +156,14 @@ void logic() {
 		GameOver = true;
 	}
 
+	//player touch the taill
+	for (int i = 0; i < tailLength; i++) {
+		if (x == tailX[i] && y == tailY[i]) {
+			GameOver = true;
+		}
+	}
+
+	//player touch the fruit
 	if (x == fruitX && y == fruitY) {
 		fruitX = rand() % width;
 		fruitY = rand() % hight;
