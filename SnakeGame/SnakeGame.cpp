@@ -11,6 +11,11 @@ const int hight = 25;
 
 //player position and score 
 int x, y,speed;
+int tailX[100], tailY[100],tailLength;
+
+//tail position
+int ftposX, ftposY, stposX, stposY;
+
 
 //fruit position
 int fruitX, fruitY;
@@ -60,7 +65,16 @@ void Draw(){
 				cout << "f";
 			}
 			else {
-				cout << " ";
+				bool tail = false;
+				for (int k = 0; k < tailLength; k++) {
+					if (j == tailX[k] && i == tailY[k]) {
+						cout << "o";
+						tail = true;
+					}
+				}
+				if (!tail) {
+					cout << " ";
+				}
 			}
 			
 		}
@@ -105,6 +119,22 @@ void game_Input() {
 
 
 void logic() {
+	//taill
+	ftposX = tailX[0];
+	ftposY = tailY[0];
+	tailX[0] = x;
+	tailY[0] = y;
+	for (int i = 1; i < tailLength; i++) {
+		stposX = tailX[i];
+		stposY = tailY[i];
+		tailX[i] = ftposX;
+		tailY[i] = ftposY;
+		ftposX = stposX;
+		ftposY = stposY;
+	}
+
+	//movment
+
 	switch (dir)
 	{
 	case UP:
@@ -121,7 +151,7 @@ void logic() {
 		break;
 	}
 
-
+	//player touch the wall
 	if (x <= 0 || x >= width -1 || y <= 0 || y > hight-1 ) {
 		GameOver = true;
 	}
@@ -134,6 +164,7 @@ void logic() {
 		fruitX = rand() % width;
 		fruitY = rand() % hight;
 		score++;
+		tailLength++;
 	}
 
 }
